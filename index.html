@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Webpage with JavaScript</title>
+  <style>
+    /* General styling */
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f4f4f9;
+      color: #333;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    section#content {
+      text-align: center;
+      margin: 20px;
+    }
+
+    button {
+      margin: 10px;
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    .active {
+      color: red;
+      font-weight: bold;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Interactive JavaScript Webpage</h1>
+  </header>
+
+  <section id="content">
+    <p>This is a sample paragraph. Click a button below to interact with the page.</p>
+    <button id="changeTextBtn">Change Text</button>
+    <button id="toggleStyleBtn">Toggle Style</button>
+    <button id="addElementBtn">Add New Element</button>
+    <button id="removeElementBtn">Remove Last Element</button>
+  </section>
+
+  <footer>
+    <p>Created by Your Name</p>
+  </footer>
+
+  <script>
+    // Change text content dynamically
+    const changeTextBtn = document.getElementById('changeTextBtn');
+    const content = document.getElementById('content');
+
+    changeTextBtn.addEventListener('click', () => {
+      content.querySelector('p').textContent = "The text has been dynamically changed!";
+    });
+
+    // Modify CSS styles dynamically
+    const toggleStyleBtn = document.getElementById('toggleStyleBtn');
+    toggleStyleBtn.addEventListener('click', () => {
+      const paragraph = content.querySelector('p');
+      paragraph.classList.toggle('active');
+    });
+
+    // Add new element to the page
+    const addElementBtn = document.getElementById('addElementBtn');
+    addElementBtn.addEventListener('click', () => {
+      const newElement = document.createElement('p');
+      newElement.textContent = "A new paragraph element has been added!";
+      content.appendChild(newElement);
+    });
+
+    // Remove the last element added to the page
+    const removeElementBtn = document.getElementById('removeElementBtn');
+    removeElementBtn.addEventListener('click', () => {
+      const paragraphs = content.querySelectorAll('p');
+      if (paragraphs.length > 1) {  // Ensure there's more than 1 paragraph
+        content.removeChild(paragraphs[paragraphs.length - 1]);
+      }
+    });
+  </script>
+</body>
+</html>
+
